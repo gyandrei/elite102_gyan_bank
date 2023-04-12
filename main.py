@@ -1,36 +1,20 @@
-#import functions as md
-
-#md.introduction()
-
-
-
+import functions as md
 import mysql.connector
 
- 
 
-connection = mysql.connector.connect(user = 'root', database = 'example', password = 'Aquarius_9789')
+""""
 
- 
+git add .
+git commit -m “Adding new file”
+git push origin main
 
-cursor = connection.cursor()
+"""
 
- 
 
-testQuery = ('SELECT * FROM student')
+name = md.introduction()
+task = md.usertask()
+print(name)
+print(userchoice)
 
- 
 
-cursor.execute(testQuery)
-
- 
-
-for item in cursor:
-
-    print(item)
-
- 
-
-cursor.close()
-
-connection.close()
-
+md.printuser()
