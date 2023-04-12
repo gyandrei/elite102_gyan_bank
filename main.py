@@ -1,5 +1,6 @@
-import functions as md
 import mysql.connector
+import functions as md
+
 
 
 """"
@@ -10,11 +11,26 @@ git push origin main
 
 """
 
+Game = True
 
-name = md.introduction()
-task = md.usertask()
-print(name)
-print(userchoice)
+while Game:
+
+    name = md.introduction()
+    task = md.usertask(name)
+    print(name)
+    print(task)
+
+    def mainfunction(task):
+        if task == 1:
+            print("What is your id")
+            id = int(input())
+            md.checkbalance(id)
+    
+    mainfunction(task)
 
 
-md.printuser()
+
+
+    ##md.printuser()
+
+    Game = False
