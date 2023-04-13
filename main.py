@@ -16,21 +16,31 @@ Game = True
 while Game:
 
     name = md.introduction()
-    task = md.usertask(name)
-    print(name)
-    print(task)
-
-    def mainfunction(task):
-        if task == 1:
-            print("What is your id")
-            id = int(input())
-            md.checkbalance(id)
+    task, id = md.usertask(name)
     
-    mainfunction(task)
+
+    
+    def mainfunction(task, id):
+        if task == 1:
+            
+            md.checkbalance(id)
+        
+        """if task == 2:
+
+        if task == 3:
+
+        if task == 4:
+
+        if task == 5:
+
+        if task == 6:
+    """
+    
+    mainfunction(task, id)
 
 
 
 
-    ##md.printuser()
+    
 
     Game = False

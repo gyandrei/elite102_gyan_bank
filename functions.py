@@ -19,10 +19,16 @@ def connect_to_db():
         database='gyan_bank'
     )
 
-def printuser():
+"""
+###################################################################
+Option 1. Check Balance
+###################################################################
+"""
+
+def checkbalance(id):
     connection = connect_to_db()
     cursor = connection.cursor()
-    testQuery = ('SELECT * FROM user')
+    testQuery = (f'SELECT * FROM user where id={id}')
     cursor.execute(testQuery)
     for item in cursor:
         print(item)
@@ -57,33 +63,53 @@ This is user tasks function
 
 def usertask(user_name):
     name = user_name
-    
-    options = [1,2,3,4,5,6] 
+    options = [1,2,3,4,5] 
     userchoice = 0
+    haveaccount = 0
 
-    print(f'\nHello {name}. What would you like to do today?')
+    haveaccount = input('Do you have an account with us already? Y/N \n')
 
-    print("""
+    if haveaccount == 'Y':
+
+        id = int(input('What is your id? \n'))
+
+        print(f'\nHello {name}. What would you like to do today?')
+
+        print("""
     ================================================
     <<< 1. Check Balance
     <<< 2. Deposit
     <<< 3. Withdraw
-    <<< 4. Create Account
-    <<< 5. Delete Account
-    <<< 6. Modify Account
+    <<< 4. Delete Account
+    <<< 5. Modify Account
     ================================================
     """)
-
-    print()
     
-    userchoice = int(input())
-
-    while userchoice not in options:
-        print("That is not one of the options. Please enter a single digit number to select a task")
+        
         userchoice = int(input())
 
-    print()
-    return userchoice
+        while userchoice not in options:
+            print("""
+    ====================================================
+    That is not one of the options. 
+    Please enter a single digit number to select a task.
+    ====================================================
+    """)
+            userchoice = int(input())
+    
+    if haveaccount == 'N':
+        createaccount = input("""
+    ====================================================
+    Would like to create an account? Y/N \n
+    ====================================================
+    """)
+        
+        if createaccount == 'Y':
+            print("Let's create a new account")
+
+    return userchoice, id
+
+
 
 
 
