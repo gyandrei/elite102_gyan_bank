@@ -32,9 +32,15 @@ while Game:
         if task == 4:
 
         if task == 5:
+        """
 
         if task == 6:
-    """
+            firstname = input("What is your legal first name? \n")
+            lastname = input("What is your legal last name? \n")
+            balance = int(input("How much will you be depositing into your account? \n"))
+            md.createaccount(id, firstname, lastname, balance)
+        
+    
     
     mainfunction(task, id)
 
