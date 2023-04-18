@@ -35,10 +35,20 @@ while Game:
         """
 
         if task == 6:
-            firstname = input("What is your legal first name? \n")
-            lastname = input("What is your legal last name? \n")
-            balance = int(input("How much will you be depositing into your account? \n"))
-            md.createaccount(id, firstname, lastname, balance)
+
+            print("""
+================================================
+    """)
+
+            firstname = input("What is your legal first name? \n\n")
+            lastname = input("\nWhat is your legal last name? \n")
+            balance = int(input("\nHow much will you be depositing into your account? \n\n"))
+
+            print("""
+================================================
+    """)
+
+            md.createaccount(firstname, lastname, balance)
         
     
     

@@ -1,10 +1,6 @@
 import mysql.connector
 
 
-#################variable###################
-name = 0
-task = 0
-
 """
 ###################################################################
 This is where the databse is connected to python
@@ -21,14 +17,20 @@ def connect_to_db():
 
 """
 ###################################################################
-Option 1. Check Balance
+Options start
 ###################################################################
+"""
+
+"""
+#######################
+Option 1. Check Balance
+#######################
 """
 
 def checkbalance(id):
     connection = connect_to_db()
     cursor = connection.cursor()
-    testQuery = (f'')
+    testQuery = (f'SELECT * FROM user where id={id}')
     cursor.execute(testQuery)
     for item in cursor:
         print(item)
@@ -36,9 +38,9 @@ def checkbalance(id):
     connection.close()
 
 """
-###################################################################
+#######################
 Option 2. Deposit
-###################################################################
+#######################
 """
 
 def deposit(id):
@@ -49,27 +51,27 @@ def deposit(id):
 
 
 """
-###################################################################
+########################
 Option 3. Withdraw
-###################################################################
+########################
 """
 
 
 
 
 """
-###################################################################
+########################
 Option 4. Delete Account
-###################################################################
+########################
 """
 
 
 
 
 """
-###################################################################
+########################
 Option 5. Modify Account
-###################################################################
+########################
 """
 
 
@@ -77,24 +79,28 @@ Option 5. Modify Account
 
 
 """
-###################################################################
+########################
 Option 6. Create Account
-###################################################################
+########################
 """
 
-def createaccount(id, firstname, lastname, balance):
+def createaccount(firstname, lastname, balance):
     connection = connect_to_db()
     cursor = connection.cursor()
-    sql = "INSERT INTO customers VALUES (%s, %s)"
-    val = (f"{id}", f"{firstname}", f"{lastname}", f"{balance}")
-    cursor.execute(sql, val)
+    sql = (f"INSERT INTO user (firstname, lastname, balance) VALUES ('{firstname}', '{lastname}', {balance})")
+    cursor.execute(sql)
+    connection.commit()
     cursor.close()
     connection.close()
-    connect_to_db.commit()
-
-
-
+    
 """
+###################################################################
+Option finished
+###################################################################
+
+
+
+
 ###################################################################
 This is where the introduction begins
 ###################################################################
@@ -107,7 +113,7 @@ def introduction():
     ~~~~~~~~~Welcome to Gyan Banking System~~~~~~~~~
     ================================================  
     """)
-
+    print()
     name = input('What is your name: ')
 
     return name
@@ -140,7 +146,8 @@ def usertask(user_name):
     <<< 5. Modify Account
     ================================================
     """)
-    
+
+        print()
         
         userchoice = int(input())
 
@@ -151,15 +158,16 @@ def usertask(user_name):
     Please enter a single digit number to select a task.
     ====================================================
     """)
+            print()
             userchoice = int(input())
     
     if haveaccount == 'N':
         createaccount = input("""
-    ====================================================
-    Would like to create an account? Y/N \n
-    ====================================================
+    =================================================
+    Would like to create an account? Y/N
+    =================================================
     """)
-        
+        print()
         if createaccount == 'Y':
             print("Let's create a new account")
             userchoice = 6
