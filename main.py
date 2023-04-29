@@ -1,6 +1,6 @@
 import mysql.connector
 import functions as md
-
+import os 
 
 
 """"
@@ -14,15 +14,14 @@ git push origin main
 Game = True
 
 while Game:
-
-    name = md.introduction()
-    task, id = md.usertask(name)
+    md.introduction()
     
-
+    task, id = md.usertask()
     
     def mainfunction(task, id):
+        
         if task == 1:
-            
+            md.title("Check Balance")
             md.checkbalance(id)
         
         """if task == 2:
@@ -31,18 +30,19 @@ while Game:
 
         if task == 4:
 
-        if task == 5:
         """
 
         if task == 6:
-
+            md.title("Create Account")
             print("""
 ================================================
     """)
 
-            firstname = input("What is your legal first name? \n\n")
-            lastname = input("\nWhat is your legal last name? \n")
-            balance = int(input("\nHow much will you be depositing into your account? \n\n"))
+            firstname = input("\n\n\nWhat is your legal first name? \n\n\n")
+            
+            lastname = input("What is your legal last name? \n\n\n")
+            
+            balance = int(input("How much will you be depositing into your account? \n\n\n"))
 
             print("""
 ================================================
@@ -50,13 +50,6 @@ while Game:
 
             md.createaccount(firstname, lastname, balance)
         
-    
-    
     mainfunction(task, id)
-
-
-
-
-    
 
     Game = False
